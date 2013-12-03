@@ -63,6 +63,7 @@ int main(void)
 		if (pos) {
 			price = strndup(pos + 2, 4);
 			printf("Beans price: %s\n", price);
+			free(price);
 		}
 	}
 
