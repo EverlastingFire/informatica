@@ -10,12 +10,11 @@
 int TOH(int n, char x, char y, char z);
 
 int main(){
-    int n = 30;
+    int n;
+    printf("Number of plates: ");
+    scanf("%d", &n);
 
-    /* printf("Number of plates: ");
-    scanf("%d", &n); */
-
-    TOH(n - 1, 'A', 'B', 'C');
+    TOH(n, 'A', 'B', 'C');
 
     return 0;
 }
@@ -24,7 +23,7 @@ int TOH(int n, char x, char y, char z)
 {
     if (n > 0){
         TOH(n - 1, x, z, y);
-        /* printf("%c -> %c\n", x, y); */
+        printf("%c -> %c\n", x, y);
         TOH(n - 1, z, y, x);
     }
 }

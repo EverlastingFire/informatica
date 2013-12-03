@@ -21,7 +21,7 @@ void print_row(int n, int mem_table[3][5])
 {
     int i;
     for (i = 0; i < 5; i++) {
-        printf("%d\t", mem_table[n][i]);
+        printf("%10d\t\t", mem_table[n][i]);
     }
     printf("\n");
 }
@@ -63,15 +63,15 @@ int MCD(int n1, int n2, int mem_table[3][5], int *x, int *y)
         *s = *s2 - (*q1) * (*s1);
         *t = *t2 - (*q1) * (*t1);
 
-        /* print_row(0, mem_table);
+        print_row(0, mem_table);
         print_row(1, mem_table);
         print_row(2, mem_table);
-        printf("\n-----------------\n"); */
+        printf("\n-----------------\n");
 
         shift_up(mem_table);
     }
 
-    *x = *s;
-    *y = *t;
+    *x = *s2;
+    *y = *t2;
     return *a;
 }
