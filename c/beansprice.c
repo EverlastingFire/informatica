@@ -15,7 +15,7 @@ size_t write_data_cb(void *contents, size_t size, size_t nmemb, void *user_data)
 	size_t data_size = size * nmemb;
 	cache *mem = (cache*) user_data;
 
-	mem->data = realloc(mem->data, data_size + 1);
+	mem->data = malloc(data_size + 1);
 
 	if (!mem->data) {
 		printf("Error while allocating memory (realloc returned NULL)\n");
@@ -29,7 +29,6 @@ size_t write_data_cb(void *contents, size_t size, size_t nmemb, void *user_data)
 	return data_size;
 }
 
-
 int main(void)
 {
 	CURL *curl;
@@ -40,10 +39,11 @@ int main(void)
 	char *pos;
 	char *price;
 
-	data.data = malloc(1); /* will be reallocated to handle the response content */
+	data.data = NULL; /* will be allocated to handle the response content */
 	data.size = 0;
 
 	curl_global_init(CURL_GLOBAL_ALL);
+
 	curl = curl_easy_init();
 
 	curl_easy_setopt(curl, CURLOPT_URL, "http://beans.itcarlow.ie/prices-loyalty.html");
