@@ -18,7 +18,7 @@ size_t write_data_cb(void *contents, size_t size, size_t nmemb, void *user_data)
 	mem->data = malloc(data_size + 1);
 
 	if (!mem->data) {
-		printf("Error while allocating memory (realloc returned NULL)\n");
+		printf("Error while allocating memory (malloc returned NULL)\n");
 		return 0;
 	}
 
